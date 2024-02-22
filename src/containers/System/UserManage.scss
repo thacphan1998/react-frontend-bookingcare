@@ -25,3 +25,45 @@
     background-color: #04AA6D;
     color: white;
 }
+
+.modal-user-container {
+    .modal-header {
+        button {
+            background: transparent !important;
+            border: none;
+            font-size: 22px;
+            color: #fff
+        }
+    }
+
+    .modal-body {
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+
+            .form-group {
+                width: 48%;
+
+                &.address {
+                    width: 100%;
+                }
+
+                input {
+                    border: 1px solid #04AA6D;
+                }
+            }
+        }
+    }
+
+    .ModalFooter {
+        Button .btn {
+            padding: 4px 10px !important;
+            width: auto !important;
+            height: auto !important;
+        }
+    }
+
+}
