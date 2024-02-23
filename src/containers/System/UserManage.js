@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
+import { emitter } from '../../utils/emitter';
 
 class UserManage extends Component {
 
@@ -16,7 +17,17 @@ class UserManage extends Component {
     }
 
     async componentDidMount() {
+        console.log('component didmount')
         await this.getAllUsersFromReact();
+    }
+
+    getAllUsersFromReact = async () => {
+        let response = await getAllUsers("ALL");
+        if (response && response.errCode === 0) {
+            this.setState({
+                arrUsers: response.users
+            })
+        }
     }
 
     handleOpenToggleAddNewUser = () => {
@@ -31,16 +42,6 @@ class UserManage extends Component {
         })
     }
 
-    getAllUsersFromReact = async () => {
-        let response = await getAllUsers("ALL");
-        if (response && response.errCode === 0) {
-            this.setState({
-                arrUsers: response.users
-            })
-        }
-        console.log('da get duoc data', response);
-    }
-
     createNewUser = async (data) => {
         try {
             let response = await createNewUserService(data);
@@ -52,12 +53,28 @@ class UserManage extends Component {
                 this.setState({
                     isOpenModal: false,
                 })
+                emitter.emit('EVENT_CLEAR_MODAL_DATA')
             }
         } catch (e) {
             console.log(e)
         }
         console.log('check prop tu components con', data)
+    }
 
+    handleDeleteUser = async (user) => {
+        console.log("delete id user", user)
+        try {
+            let res = await deleteUserService(user.id);
+            if (res && res.errCode === 0) {
+                await this.getAllUsersFromReact();
+                alert(res.message);
+            } else {
+                alert(res.message);
+            }
+            console.log(res)
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     render() {
@@ -91,7 +108,6 @@ class UserManage extends Component {
                             </tr>
 
                             {arrUsers && arrUsers.map((item, index) => {
-                                console.log('check data', arrUsers)
                                 return (
                                     <tr key={index}>
                                         <td>{item.email}</td>
@@ -100,7 +116,7 @@ class UserManage extends Component {
                                         <td>{item.address}</td>
                                         <td>
                                             <button className="mx-3"><i className="fas fa-pencil-alt"></i></button>
-                                            <button><i className="fas fa-trash-alt"></i></button>
+                                            <button onClick={() => { this.handleDeleteUser(item) }}><i className="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                 )
