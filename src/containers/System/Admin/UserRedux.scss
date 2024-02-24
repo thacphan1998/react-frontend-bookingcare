@@ -1,0 +1,20 @@
+.wrap-upload-img {
+    label {
+        padding: 5px;
+        border-radius: 3px;
+        background-color: #edd;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .preview-image {
+        height: 50px;
+        width: 100%;
+        background: center center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
