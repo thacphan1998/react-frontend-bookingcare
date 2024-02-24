@@ -4,18 +4,18 @@ import './Specialty.scss';
 // import { FormattedMessage } from 'react-intl';
 import Slider from 'react-slick';
 
-import specialtyImg from '../../../assets/specialty/co-xuong-khop.png'
+import specialtyImg from '../../../assets/outstanding-doctor/cute-female-doctor-character_388759-625.jpg'
 
 
-class Specialty extends Component {
+class OutStandingDoctor extends Component {
 
     render() {
 
         return (
-            <div className="section-share section-specialty">
+            <div className="section-share section-outStanding-doctor">
                 <div className="section-container">
                     <div className="section-header">
-                        <h2>Chuyên khoa phổ biến</h2>
+                        <h2>Bác sĩ nổi bậc</h2>
                         <button>Xem thêm</button>
                     </div>
                     <div className="section-body-slide">
@@ -23,43 +23,64 @@ class Specialty extends Component {
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn Phó</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn Ân</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn Ap</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn A</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn La</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn Ba</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                             <div className="section-customize">
                                 <a >
                                     <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
+                                    <div className="doctor-title-wrap text-center">
+                                        <h3 className="title">Giáo sư, Tiến sĩ Lê Văn B</h3>
+                                        <h5>Cơ xương khớp</h5>
+                                    </div>
                                 </a>
                             </div>
                         </Slider>
@@ -83,4 +104,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);

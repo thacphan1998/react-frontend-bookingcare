@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Specialty.scss';
-// import { FormattedMessage } from 'react-intl';
+
+import './MedicalFacility.scss';
 import Slider from 'react-slick';
 
-import specialtyImg from '../../../assets/specialty/co-xuong-khop.png'
+import specialtyImg from '../../../assets/medical-facility/083122lo-go-viet-duc.jpg'
 
 
-class Specialty extends Component {
+class MedicalFacility extends Component {
 
     render() {
 
         return (
-            <div className="section-share section-specialty">
+
+            <div className="section-share section-medical-facility">
                 <div className="section-container">
                     <div className="section-header">
-                        <h2>Chuyên khoa phổ biến</h2>
+                        <h2>Cơ sở y tế</h2>
                         <button>Xem thêm</button>
                     </div>
                     <div className="section-body-slide">
@@ -73,8 +74,7 @@ class Specialty extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language,
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 
@@ -83,4 +83,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
