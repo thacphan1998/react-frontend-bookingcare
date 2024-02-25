@@ -59,6 +59,12 @@
         "gender": "Giói tính",
         "position": "Chức danh",
         "roleId": "Vai trò",
-        "image": "Hình ảnh"
+        "image": "Hình ảnh",
+        "save": "Lưu",
+        "edit": "Lưu Thay đổi"
+    },
+    "homepage": {
+        "outstanding-doctor": "Bác sĩ nỗi bật",
+        "more-infor": "Xem Thêm"
     }
 }

@@ -12,7 +12,7 @@
         "welcome": "Welcome, "
     },
     "banner": {
-        "title1": "Medical background",
+        "title1": "Medical platform",
         "title2": "Comprehensive health care",
         "child1": "specialist examination",
         "child2": "remote examination",
@@ -59,6 +59,12 @@
         "gender": "Gender",
         "position": "position",
         "roleId": "Role",
-        "image": "Avatar"
+        "image": "Avatar",
+        "save": "Save",
+        "edit": "Edit user"
+    },
+    "homepage": {
+        "outstanding-doctor": "Last week's featured doctor",
+        "more-infor": "More infor"
     }
 }
