@@ -61,10 +61,11 @@ class BookingModal extends Component {
                             </span>
                         </div>
                         <div className="booking-modal-body container">
-                            {/* {JSON.stringify(dataScheduleTimeModal)} */}
                             <div className="doctor-infor">
                                 <ProfileDoctor
                                     doctorId={doctorId}
+                                    isShowDescriptionDoctor={false}
+                                    dataScheduleTimeModal={dataScheduleTimeModal}
                                 />
                             </div>
                             <div className="row">
