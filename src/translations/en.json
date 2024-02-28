@@ -106,7 +106,9 @@
             "province": "Province",
             "name-clinic": "Clinic's name",
             "address": "Address",
-            "note": "Note"
+            "note": "Note",
+            "specialty": "Choose specialty",
+            "clinic": "Choose clinic"
         }
     }
 }
