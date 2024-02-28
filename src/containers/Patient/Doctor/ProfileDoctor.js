@@ -50,13 +50,13 @@ class ProfileDoctor extends Component {
         if (dataScheduleTimeModal && !_.isEmpty(dataScheduleTimeModal)) {
             let time = language === LANGUAGES.VI ? dataScheduleTimeModal.timeTypeData.valueVi : dataScheduleTimeModal.timeTypeData.valueEn;
 
-            let data = language === LANGUAGES.VI ?
+            let date = language === LANGUAGES.VI ?
                 moment.unix(+dataScheduleTimeModal.date / 1000).format('dddd - DD/MM/YYYY')
                 :
                 moment.unix(+dataScheduleTimeModal.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
             return (
                 <>
-                    <div>{time} - {data}</div>
+                    <div>{time} - {date}</div>
                     <div><FormattedMessage id="patient.booking-modal.price-booking" /></div>
                 </>
             )
