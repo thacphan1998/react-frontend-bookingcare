@@ -1,11 +1,34 @@
 .detail-specialty-container {
-    .search-doctor-specialty {}
+    .description-specialty {
+        background-color: #fff;
+        margin: 15px 0;
+        padding: 0 15px;
 
-    .detail-specialty-body {
-        margin: 0 100px;
+        h1 h2 h3 {
+            font-size: 18px;
+            font-weight: 600;
+        }
     }
 
-    .description-specialty {}
+    .search-doctor-specialty {
+        margin-bottom: 15px;
+
+        Select {
+            height: 25px;
+            padding: 5px 8px;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .detail-specialty-body {
+        padding: 0 100px;
+        background-color: #eee;
+        display: flex;
+        flex-direction: column;
+    }
 
     .each-doctor {
         background-color: #fff;

@@ -43,14 +43,29 @@ class DetailSpecialty extends Component {
                         })
                     }
                 }
+
+                let dataProvince = resProvince.data;
+                console.log('checkkaka', resProvince)
+                if (dataProvince && dataProvince.length > 0) {
+                    dataProvince.unshift({
+                        createdAt: null,
+                        keyMap: 'ALL',
+                        type: 'PROVINCE',
+                        valueVi: 'Toàn quốc',
+                        valueEn: 'ALL',
+
+                    })
+                }
+
                 this.setState({
                     dataDetailSpecialty: res.data,
                     arrDoctorId: arrDoctorId,
-                    listProvince: resProvince.data
+                    listProvince: dataProvince ? dataProvince : []
                 })
             }
         }
     }
+
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
@@ -63,8 +78,34 @@ class DetailSpecialty extends Component {
 
     }
 
-    handleOnChangeSelect = (event) => {
-        console.log('onchange', event.target.value)
+    handleOnChangeSelect = async (event) => {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id;
+            let location = event.target.value
+
+            let res = await getAllDetailSpecialtyById({
+                id: id,
+                location: location
+            });
+
+            if (res && res.errCode === 0) {
+                let data = res.data;
+                let arrDoctorId = [];
+                if (data && !_.isEmpty(res.data)) {
+                    let arr = data.doctorSpecialty;
+                    if (arr && arr.length > 0) {
+                        arr.map(item => {
+                            arrDoctorId.push(item.doctorId)
+                        })
+                    }
+                }
+
+                this.setState({
+                    dataDetailSpecialty: res.data,
+                    arrDoctorId: arrDoctorId,
+                })
+            }
+        }
     }
 
 
@@ -72,7 +113,6 @@ class DetailSpecialty extends Component {
     render() {
         let { arrDoctorId, dataDetailSpecialty, listProvince } = this.state;
         let { language } = this.props.language;
-        console.log('check kackcacac', this.state)
         return (
             <div className="detail-specialty-container">
                 <HomeHeader />
@@ -94,7 +134,6 @@ class DetailSpecialty extends Component {
                                     )
                                 })
                             }
-                            <option ></option>
                         </select>
                     </div>
 
@@ -108,6 +147,8 @@ class DetailSpecialty extends Component {
                                             <ProfileDoctor
                                                 doctorId={item}
                                                 isShowDescriptionDoctor={true}
+                                                isShowLinkDetail={true}
+                                                isShowPrice={false}
                                             // dataScheduleTimeModal={dataScheduleTimeModal}
                                             />
                                         </div>
