@@ -3,13 +3,38 @@ import { connect } from 'react-redux';
 
 import './MedicalFacility.scss';
 import Slider from 'react-slick';
+import { getAllClinic } from '../../../services/userService'
+import { withRouter } from 'react-router';
 
-import specialtyImg from '../../../assets/medical-facility/083122lo-go-viet-duc.jpg'
+// import specialtyImg from '../../../assets/medical-facility/083122lo-go-viet-duc.jpg'
 
 
 class MedicalFacility extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            dataClinics: []
+        }
+    }
+    async componentDidMount() {
+        let res = await getAllClinic();
+        if (res && res.errCode === 0) {
+            this.setState({
+                dataClinics: res.data ? res.data : []
+            })
+        }
+
+        console.log('check res clinic', res)
+    }
+
+    handleViewDetailClinic = (item) => {
+        if (this.props.history) {
+            this.props.history.push(`/detail-clinic/${item.id}`)
+        }
+    }
 
     render() {
+        let { dataClinics } = this.state;
 
         return (
 
@@ -21,48 +46,24 @@ class MedicalFacility extends Component {
                     </div>
                     <div className="section-body-slide">
                         <Slider {...this.props.settingsSliders}>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
-                            <div className="section-customize">
-                                <a >
-                                    <img src={specialtyImg} />
-                                    <h3 className="title">Cơ sương khớp 1</h3>
-                                </a>
-                            </div>
+                            {dataClinics && dataClinics.length > 0 &&
+                                dataClinics.map((item, index) => {
+                                    return (
+                                        <div
+                                            className="section-customize clinic-item"
+                                            key={index}
+                                            onClick={() => { this.handleViewDetailClinic(item) }}
+                                        >
+                                            <a >
+                                                <img src={item.image} />
+                                                <h3 className="title-clinic">{item.name}</h3>
+                                            </a>
+                                        </div>
+                                    )
+                                })
+                            }
+
+
                         </Slider>
                     </div>
                 </div>
@@ -83,4 +84,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MedicalFacility));

@@ -1,0 +1,9 @@
+.clinic-item {
+    cursor: pointer;
+
+    .title-clinic {
+        &:hover {
+            color: rgb(193, 193, 252);
+        }
+    }
+}
