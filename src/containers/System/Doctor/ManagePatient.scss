@@ -24,7 +24,16 @@
             }
 
             tr:nth-child(even) {
-                background-color: #dddddd;
+                background-color: none;
+            }
+
+            button {
+                cursor: pointer;
+                border: none;
+                color: #fff;
+                background-color: #a2cdf5;
+                padding: 8px 12px;
+                margin: 0 5px;
             }
         }
     }
